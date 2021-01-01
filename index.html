@@ -1,0 +1,774 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.3.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"example.com","root":"/","scheme":"Muse","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="令行禁止">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Airy">
+<meta property="og:url" content="http://example.com/index.html">
+<meta property="og:site_name" content="Airy">
+<meta property="og:description" content="令行禁止">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:author" content="Airy">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="http://example.com/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : true,
+    isPost : false,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>Airy</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">Airy</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content index posts-expand">
+            
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2021/01/01/%E8%80%81%E5%8F%B8%E6%9C%BA%E5%B8%A6%E4%BD%A0%E7%94%A8%20PHP%20%E5%AE%9E%E7%8E%B0%20Websocket%20%E5%8D%8F%E8%AE%AE/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/uploads/avatar.gif">
+      <meta itemprop="name" content="Airy">
+      <meta itemprop="description" content="令行禁止">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Airy">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2021/01/01/%E8%80%81%E5%8F%B8%E6%9C%BA%E5%B8%A6%E4%BD%A0%E7%94%A8%20PHP%20%E5%AE%9E%E7%8E%B0%20Websocket%20%E5%8D%8F%E8%AE%AE/" class="post-title-link" itemprop="url">老司机带你用 PHP 实现 Websocket 协议</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2021-01-01 15:56:16 / 修改时间：17:18:18" itemprop="dateCreated datePublished" datetime="2021-01-01T15:56:16+08:00">2021-01-01</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/socket/" itemprop="url" rel="index"><span itemprop="name">socket</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <blockquote>
+<p>本文转载自 LearnKu 社区作者 Dennis_Ritchie<br>原文地址：<a target="_blank" rel="noopener" href="https://learnku.com/articles/36471">https://learnku.com/articles/36471</a></p>
+</blockquote>
+<h2 id="我为什么会写这篇文章？"><a href="#我为什么会写这篇文章？" class="headerlink" title="我为什么会写这篇文章？"></a>我为什么会写这篇文章？</h2><p>当初作为编程小白的我，刚刚从事后台工作，觉得http是个很牛逼的东西，然而后面随着自己深入学习并实践之后，觉得原来和我所想的天壤之别，没大家想象的那么复杂，仅仅是个协议嘛！。后面学习的东西多了，慢慢的就淡定了。今天这里之所以要讲websocket，而不是其它的协议，从某种意义上来说（请允许我装个逼），更能说明问题，如果你把websocket都搞懂了，那么http对于你来说，简直就是雕虫小技啊，关于websocket的代码，以前我使用C和C++写的，但是为了PHP的coder（PHP是世界上最好的语言）能明白，我用PHP重新写了一遍，但是个精简版，对于我们彻底搞懂websocket，理解它的精华所在，已经足够了。代码我已经上传到了码云（<a target="_blank" rel="noopener" href="https://gitee.com/obamajs/php-websocket-base-implemention">php-websocket-base-implemention</a>），<strong>请大家一定一定要下载下来，并亲自运行</strong>，<strong>实践才是检验真理的唯一标准啊</strong>，代码是完全可以运行的，如果运行的时候有障碍，请联系我。该博文差不多修修改改了3天（幸亏公司里面事不多），尽可能的给大家讲清楚。突然感觉，写文章好累啊，这都不重要，希望大家能够看懂，不然我写的就没啥用了。更希望大家遇到不懂的，提出疑问。写完之后，我再次审查了当前博文的内容，修改了一些拼写错误，可能还会有一些漏网之鱼，希望大家多多指正。</p>
+<h2 id="文章链接"><a href="#文章链接" class="headerlink" title="文章链接"></a>文章链接</h2><p><a target="_blank" rel="noopener" href="https://learnku.com/articles/36655">PHP实现Base64编码</a></p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2021/01/01/%E8%80%81%E5%8F%B8%E6%9C%BA%E5%B8%A6%E4%BD%A0%E7%94%A8%20PHP%20%E5%AE%9E%E7%8E%B0%20Websocket%20%E5%8D%8F%E8%AE%AE/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2020/07/07/PHP-%E4%B8%8E-JavaScript-%E7%AB%AF%E4%B9%8B%E9%97%B4%E7%9A%84%E5%8A%A0%E5%AF%86%E8%A7%A3%E5%AF%86/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/uploads/avatar.gif">
+      <meta itemprop="name" content="Airy">
+      <meta itemprop="description" content="令行禁止">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Airy">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/07/07/PHP-%E4%B8%8E-JavaScript-%E7%AB%AF%E4%B9%8B%E9%97%B4%E7%9A%84%E5%8A%A0%E5%AF%86%E8%A7%A3%E5%AF%86/" class="post-title-link" itemprop="url">PHP 与 JavaScript 端之间的加密解密</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2020-07-07 12:36:10" itemprop="dateCreated datePublished" datetime="2020-07-07T12:36:10+08:00">2020-07-07</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-12-31 11:04:44" itemprop="dateModified" datetime="2020-12-31T11:04:44+08:00">2020-12-31</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <blockquote>
+<p>转载于 <a target="_blank" rel="noopener" href="https://learnku.com/laravel/t/46851">https://learnku.com/laravel/t/46851</a></p>
+</blockquote>
+<p><img src="https://cdn.learnku.com/uploads/images/202007/03/1/HdUs6edXk0.png!large" alt="Laravel"></p>
+<p>只是为了好玩，让我们在客户端JavaScript中加密一些内容，然后让PHP服务器对其进行解密。请注意<strong>这个 <a target="_blank" rel="noopener" href="https://stackoverflow.com/a/12327375/2224584">不会取代TLS (HTTPS)</a></strong>.</p>
+<h3 id="使用-Nadium-Plus-的-JavaScript-加密"><a href="#使用-Nadium-Plus-的-JavaScript-加密" class="headerlink" title="使用 Nadium Plus 的 JavaScript 加密"></a>使用 Nadium Plus 的 JavaScript 加密</h3><p>你需要 <a target="_blank" rel="noopener" href="https://github.com/paragonie/sodium-plus/releases">最新版的 sodium-plus</a> （在撰写本文时，它是 <a target="_blank" rel="noopener" href="https://github.com/paragonie/sodium-plus/releases/tag/v0.4.0">version 0.4.0</a>.)</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;script</span><br><span class="line">  src=<span class="string">&quot;/static/js/sodium-plus.min.js&quot;</span></span><br><span class="line">  integrity=<span class="string">&quot;sha384-lv7SVE0eb0bXA3fgK6PwlhViiUwG6tBuMAhS8XX7RvBvyRcdEdJ8HKtFgs4vHTUh&quot;</span></span><br><span class="line">&gt;&lt;/script&gt;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>接下来，您将要编写一些JavaScript代码来加密消息并将其发送到服务器。我将在此示例中使用jQuery，但是您可以轻松地使其适应使用<code>XMLHttpRequest</code>对象。</p>
+<p>让我们定义两个函数。人们从硬编码的字符串中加载了一个<code>CryptographyKey</code>对象(n.b.您从不想真正这样做，但是为了简单易用的示例，我们使用了硬编码的秘密)。另一个实际上加密了一条消息。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 获取示例密钥。在现实世界中，你需要随机生成这些。</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">async</span> <span class="function"><span class="keyword">function</span> <span class="title">getExampleKey</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (!<span class="built_in">window</span>.sodium) <span class="built_in">window</span>.sodium = <span class="keyword">await</span> SodiumPlus.auto();</span><br><span class="line">    <span class="keyword">return</span> CryptographyKey.from(</span><br><span class="line">        <span class="string">&#x27;e9897cea109576c2f8088c277125d553e4f83afbc0abbb92cfb1f7b776b4fee0&#x27;</span>,</span><br><span class="line">        <span class="string">&#x27;hex&#x27;</span></span><br><span class="line">    );</span><br><span class="line">    <span class="comment">// return await sodium.crypto_secretbox_keygen();</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 加密传入的 message.</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">async</span> <span class="function"><span class="keyword">function</span> <span class="title">encryptMessage</span>(<span class="params">message, key</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (!<span class="built_in">window</span>.sodium) <span class="built_in">window</span>.sodium = <span class="keyword">await</span> SodiumPlus.auto();</span><br><span class="line"></span><br><span class="line">    <span class="keyword">let</span> nonce = <span class="keyword">await</span> sodium.randombytes_buf(<span class="number">24</span>);</span><br><span class="line">    <span class="keyword">let</span> encrypted = <span class="keyword">await</span> sodium.crypto_secretbox(message, nonce, key);</span><br><span class="line">    <span class="keyword">return</span> nonce.toString(<span class="string">&#x27;hex&#x27;</span>) + encrypted.toString(<span class="string">&#x27;hex&#x27;</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+<p>接下来，您将要编写一个函数来收集用户输入，对其进行加密，然后将其发送到服务器。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">async</span> <span class="function"><span class="keyword">function</span> <span class="title">sendEncryptedMessage</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">let</span> key = <span class="keyword">await</span> getExampleKey();</span><br><span class="line">    <span class="keyword">let</span> message = $(<span class="string">&quot;#user-input&quot;</span>).val();</span><br><span class="line">    <span class="keyword">let</span> encrypted = <span class="keyword">await</span> encryptMessage(message, key);</span><br><span class="line">    $.post(<span class="string">&quot;/send-message&quot;</span>, &#123;<span class="string">&quot;message&quot;</span>: encrypted&#125;, <span class="function"><span class="keyword">function</span> (<span class="params">response</span>) </span>&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(response);</span><br><span class="line">        $(<span class="string">&quot;#output&quot;</span>).append(<span class="string">&quot;&lt;li&gt;&lt;pre&gt;&quot;</span> + response.message + <span class="string">&quot;&lt;/pre&gt;&lt;/li&gt;&quot;</span>);</span><br><span class="line">    &#125;);</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>…以及一些支持HTML的内容：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">label</span> <span class="attr">for</span>=<span class="string">&quot;user-input&quot;</span>&gt;</span>Type a message to encrypt and send:<span class="tag">&lt;/<span class="name">label</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">textarea</span> <span class="attr">id</span>=<span class="string">&quot;user-input&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">textarea</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">button</span> <span class="attr">id</span>=<span class="string">&quot;send-it&quot;</span> <span class="attr">type</span>=<span class="string">&quot;button&quot;</span>&gt;</span>Send Encrypted Message<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">hr</span> /&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">ol</span> <span class="attr">id</span>=<span class="string">&quot;output&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">ol</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">&quot;text/javascript&quot;</span>&gt;</span></span><br><span class="line"><span class="javascript">$(<span class="string">&quot;#send-it&quot;</span>).on(<span class="string">&#x27;click&#x27;</span>, sendEncryptedMessage);</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h3 id="使用-Sodium-解密-PHP"><a href="#使用-Sodium-解密-PHP" class="headerlink" title="使用 Sodium 解密 PHP"></a>使用 Sodium 解密 PHP</h3><p>你需要 <a target="_blank" rel="noopener" href="https://github.com/paragonie/sodium_compat">paragonie/sodium_compat</a>.</p>
+<p>如果您使用的是 PHP 7.2 ，则很有可能只使用内置的 <code>sodium_*</code> 函数。但是，默认情况下某些发行版 <em>可能</em> 错误地禁用了钠扩展名。因此，为了安全起见，无论如何都要安装sodium_compat。</p>
+<p>如果您使用的是框架(Symfony，Laravel)，您的代码看起来会干净很多，但是为了说明起见，解密代码如下所示：</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"><span class="keyword">declare</span>(strict_types=<span class="number">1</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">require</span> <span class="string">&#x27;vendor/autoload.php&#x27;</span>; <span class="comment">// Composer</span></span><br><span class="line"></span><br><span class="line">header(<span class="string">&#x27;Content-Type: application/json&#x27;</span>);</span><br><span class="line"></span><br><span class="line"><span class="variable">$key</span> = sodium_hex2bin(<span class="string">&#x27;e9897cea109576c2f8088c277125d553e4f83afbc0abbb92cfb1f7b776b4fee0&#x27;</span>);</span><br><span class="line"></span><br><span class="line"><span class="variable">$encrypted</span> = <span class="variable">$_POST</span>[<span class="string">&#x27;message&#x27;</span>] ?? <span class="literal">null</span>;</span><br><span class="line"><span class="keyword">if</span> (!<span class="variable">$encrypted</span>) &#123;</span><br><span class="line">    <span class="keyword">echo</span> json_encode(</span><br><span class="line">        [<span class="string">&#x27;message&#x27;</span> =&gt; <span class="literal">null</span>, <span class="string">&#x27;error&#x27;</span> =&gt; <span class="string">&#x27;no message provided&#x27;</span>],</span><br><span class="line">        JSON_PRETTY_PRINT</span><br><span class="line">    );</span><br><span class="line">    <span class="keyword">exit</span>(<span class="number">1</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="variable">$nonce</span> = sodium_hex2bin(substr(<span class="variable">$encrypted</span>, <span class="number">0</span>, <span class="number">48</span>));</span><br><span class="line"><span class="variable">$ciphertext</span> = sodium_hex2bin(substr(<span class="variable">$encrypted</span>, <span class="number">48</span>));</span><br><span class="line"><span class="variable">$plaintext</span> = sodium_crypto_secretbox_open(<span class="variable">$ciphertext</span>, <span class="variable">$nonce</span>, <span class="variable">$key</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">echo</span> json_encode(</span><br><span class="line">    [<span class="string">&#x27;message&#x27;</span> =&gt; <span class="variable">$plaintext</span>, <span class="string">&#x27;original&#x27;</span> =&gt; <span class="variable">$encrypted</span>],</span><br><span class="line">    JSON_PRETTY_PRINT</span><br><span class="line">);</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h3 id="把它放在一起"><a href="#把它放在一起" class="headerlink" title="把它放在一起"></a>把它放在一起</h3><p>当您键入一条消息并按下按钮时，它将对其进行加密并将十六进制编码的字符串发送到服务器。</p>
+<p>然后，PHP代码将解密消息并以JSON响应返回纯文本。</p>
+<p>然后，JavaScript代码将从JSON响应中获取纯文本，并将其附加到表单下方的输出字段。</p>
+<h2 id="安全考虑因素"><a href="#安全考虑因素" class="headerlink" title="安全考虑因素"></a>安全考虑因素</h2><p>这只是一个示例，用来说明如何使用 <a target="_blank" rel="noopener" href="https://github.com/paragonie/sodium-plus">sodium-plus</a>（JavaScript）和 libsodium（PHP）来加密/解密消息.</p>
+<p>我们使用了很多<em>的</em>快捷方式，这些快捷方式是您在实际系统中不希望使用的（例如：对加密密钥进行硬编码，并为了简洁而避免进行错误检查）。</p>
+<p>如果您想做更高级的事情 (<a target="_blank" rel="noopener" href="https://github.com/paragonie/sodium-plus/blob/master/docs/SodiumPlus/sealed-boxes.md">JavaScript中的公钥加密</a> 和 <a target="_blank" rel="noopener" href="https://paragonie.com/book/pecl-libsodium/read/08-advanced.md#crypto-box-seal">一致的PHP函数</a>), 该文档可在线免费获得。</p>
+<h2 id="进一步阅读"><a href="#进一步阅读" class="headerlink" title="进一步阅读"></a>进一步阅读</h2><ul>
+<li>  <a target="_blank" rel="noopener" href="https://www.nccgroup.trust/us/about-us/newsroom-and-events/blog/2011/august/javascript-cryptography-considered-harmful">浏览器JavaScript加密的危险</a></li>
+<li>  <a target="_blank" rel="noopener" href="https://paragonie.com/blog/2019/10/improving-cryptography-javascript-ecosystem">改善JavaScript生态系统的密码学</a></li>
+<li>  <a target="_blank" rel="noopener" href="https://dev.to/paragonie/sodium-plus-a-positive-cryptography-experience-for-javascript-developers-2p08">Sodium-Plus：JavaScript开发人员的积极密码学经验</a></li>
+</ul>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2020/07/06/%E6%B8%B8%E6%88%8F-%E8%8B%B1%E9%9B%84%E5%A1%94-Heroes-Tower-%E5%BC%80%E5%8F%91%E5%89%8D%E6%9E%84%E6%80%9D/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/uploads/avatar.gif">
+      <meta itemprop="name" content="Airy">
+      <meta itemprop="description" content="令行禁止">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Airy">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/07/06/%E6%B8%B8%E6%88%8F-%E8%8B%B1%E9%9B%84%E5%A1%94-Heroes-Tower-%E5%BC%80%E5%8F%91%E5%89%8D%E6%9E%84%E6%80%9D/" class="post-title-link" itemprop="url">游戏 [英雄塔 Heroes Tower] 开发前构思</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2020-07-06 22:29:03 / 修改时间：22:50:28" itemprop="dateCreated datePublished" datetime="2020-07-06T22:29:03+08:00">2020-07-06</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>最近闲来无事，准备作个简单的游戏来学习一些新的技术，也给自己定下几个近期目标，来督促自己。</p>
+<p>游戏的类型还没有完全的确定，目前的想法只是做一个，选择英雄来闯关、冲塔、打怪的游戏模式。以后可能会增加游戏的可玩性，出更多的英雄和游戏模式。</p>
+<p>因为前端技术的不足，所以准备做成一个文本游戏。</p>
+<p>大概内容如下，玩家可以选择一个英雄（以后可能会考虑增加多英雄配合的模式）来作为游戏的主角，控制英雄进行游戏。</p>
+<p>每种不同的英雄拥有各自的不同属性和技能（暂定为三个）属性大概就是：生命值、法力值、攻击力、魔法强度、物理抗性、魔法抗性等。</p>
+<p>等级暂定为30级，可以通过打怪进行升级。每个英雄都有不同的随等级提升成长的属性值，通过升级或穿戴装备可以增加这些数值。道具则是多功能的，可以是：短暂增加英雄属性，回复英雄数值，提升等级，复活等。</p>
+<p>每层塔都会有不同的怪物和BOOS或者没有BOOS，每层和每种怪都会提供不同的等级甚至会掉落专属装备和道具。</p>
+<p>当然，为了游戏的可玩性，爆率会控制在一个较低范围内，掉落的物品也是概率性的。尽量避免出现闯关难度过低或过高的情况。</p>
+<p>暂时先就这么多，再考虑一下其他因素，看看需要增加或者修改甚至删除哪个部分。</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2020/07/06/Laravel%20%E5%AF%B9%E5%85%B3%E8%81%94%E8%A1%A8%E7%9A%84%E4%B8%80%E4%BA%9B%E6%93%8D%E4%BD%9C/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/uploads/avatar.gif">
+      <meta itemprop="name" content="Airy">
+      <meta itemprop="description" content="令行禁止">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Airy">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/07/06/Laravel%20%E5%AF%B9%E5%85%B3%E8%81%94%E8%A1%A8%E7%9A%84%E4%B8%80%E4%BA%9B%E6%93%8D%E4%BD%9C/" class="post-title-link" itemprop="url">Laravel 对关联表的一些操作</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2020-07-06 22:21:48" itemprop="dateCreated datePublished" datetime="2020-07-06T22:21:48+08:00">2020-07-06</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-01-01 16:35:06" itemprop="dateModified" datetime="2021-01-01T16:35:06+08:00">2021-01-01</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Laravel/" itemprop="url" rel="index"><span itemprop="name">Laravel</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>Laravel 为开发者提供了灵活且优雅的 model 层。不过，因为方法太多，有时总是忘记一些有用的方法。这里就一对多模型关联的中对关联表的一个方法 with 的用法做一个记录</p>
+<p>在业务逻辑中，经常会有这样的场景，一个用户上传有多个图片，而图片只归属于一个用户，这个时候就需要一对多关联，假设用户表 users 和 图片表 images。images 表中有一个user_id 字段用来标记图片所属的用户。</p>
+<p>在 users 模型中创建关联：</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 关联图片表</span></span><br><span class="line"><span class="comment"> * */</span></span><br><span class="line"><span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">images</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function"></span>&#123;﻿</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">$this</span>-&gt;hasMany(Images::class, <span class="string">&#x27;user_id&#x27;</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>此时访问集合中的 images 属性就可以访问到所有属于此用户的图片了。</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$user</span>   = User::where(<span class="string">&#x27;id&#x27;</span>, <span class="variable">$userId</span>))-&gt;first();</span><br><span class="line"><span class="comment">// 这里最好加上判断，如果是 null 就不存在 images 属性</span></span><br><span class="line"><span class="variable">$images</span> = <span class="variable">$user</span>-&gt;images;<span class="comment">// 这就是这个用户的所有图片</span></span><br></pre></td></tr></table></figure>
+<p>然而，有时候我们不需要取出 images 表的所有字段，我们只需要 path 一个字段即可。</p>
+<p>但如果直接使用 select([‘path’]) 方法的话，是查找的 users 表中的 path 字段，然而 users 表中并不存在 path 字段，这样使用会产生错误，这样就需要用到下面的方法。</p>
+<blockquote>
+<p>关于预加载用法可以参考 <a target="_blank" rel="noopener" href="https://learnku.com/docs/laravel/6.x/eloquent-relationships/5177#012e7e">文档</a></p>
+</blockquote>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$images</span> = User::getAnchorByUuid(<span class="variable">$request</span>-&gt;get(<span class="string">&#x27;uuid&#x27;</span>))</span><br><span class="line">            -&gt;with([</span><br><span class="line">                <span class="string">&#x27;images&#x27;</span> =&gt; <span class="function"><span class="keyword">function</span> (<span class="params"><span class="variable">$query</span></span>) </span>&#123;</span><br><span class="line">                    <span class="variable">$query</span>-&gt;select([<span class="string">&#x27;path&#x27;</span>, <span class="string">&#x27;user_id&#x27;</span>]);</span><br><span class="line">                &#125;</span><br><span class="line">            ])</span><br><span class="line">            -&gt;first()</span><br><span class="line">            -&gt;images;</span><br></pre></td></tr></table></figure>
+<p>或者</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$images</span> = User::where(<span class="string">&#x27;id&#x27;</span>, <span class="variable">$request</span>-&gt;get(<span class="string">&#x27;uuid&#x27;</span>))</span><br><span class="line">            -&gt;with(<span class="string">&#x27;images:path,user_id&#x27;</span>)</span><br><span class="line">            -&gt;first()</span><br><span class="line">            -&gt;images;</span><br></pre></td></tr></table></figure>
+<p>with 可以使用字符串或者数组，数组的值可以是闭包函数，第一种方式更加灵活，第二种则更加简便，闭包中可以使用更多的方法，例如：</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$images</span> = User::getAnchorByUuid(<span class="variable">$request</span>-&gt;get(<span class="string">&#x27;uuid&#x27;</span>))</span><br><span class="line">            -&gt;with([</span><br><span class="line">                <span class="string">&#x27;images&#x27;</span> =&gt; <span class="function"><span class="keyword">function</span> (<span class="params"><span class="variable">$query</span></span>) </span>&#123;</span><br><span class="line">                    <span class="variable">$query</span>-&gt;orderByDesc(<span class="string">&#x27;id&#x27;</span>);</span><br><span class="line">                    <span class="variable">$query</span>-&gt;where(<span class="string">&#x27;status&#x27;</span>, <span class="number">0</span>);</span><br><span class="line">                &#125;</span><br><span class="line">            ]);</span><br></pre></td></tr></table></figure>
+<p>本篇文章就到此结束了，主要目的是为了记录一下 with 的用法。</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2020/01/11/%E8%B0%83%E4%BC%91%E7%9A%84%E4%B8%80%E5%A4%A9/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/uploads/avatar.gif">
+      <meta itemprop="name" content="Airy">
+      <meta itemprop="description" content="令行禁止">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Airy">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/01/11/%E8%B0%83%E4%BC%91%E7%9A%84%E4%B8%80%E5%A4%A9/" class="post-title-link" itemprop="url">调休的一天</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2020-01-11 15:30:21" itemprop="dateCreated datePublished" datetime="2020-01-11T15:30:21+08:00">2020-01-11</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-07-06 22:49:33" itemprop="dateModified" datetime="2020-07-06T22:49:33+08:00">2020-07-06</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>周六，本来要休息的日子，我却还在上班😂</p>
+<p>不过不是加班，谁让我上次调休休息过了。让我想起一句经典台词“出来混，迟早要还的”这不。来补班了嘛。</p>
+<p>不过也挺好，人少清净，就连平时领导在时跟只鸡崽一样的同事，都大胆的玩起了游戏。真菜！</p>
+<p><img src="http://blog.chongyunct.com/storage/canvas/images/t2804JlgNcRG7D8rwAeaHHNMMxTjhYqNU5ynCGlY.png" alt="avatar"></p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Airy"
+      src="/uploads/avatar.gif">
+  <p class="site-author-name" itemprop="name">Airy</p>
+  <div class="site-description" itemprop="description">令行禁止</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">5</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+        <span class="site-state-item-count">2</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+        <span class="site-state-item-count">4</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Airy</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://muse.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a> 强力驱动
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/pjax/pjax.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/muse.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+  <script>
+var pjax = new Pjax({
+  selectors: [
+    'head title',
+    '#page-configurations',
+    '.content-wrap',
+    '.post-toc-wrap',
+    '.languages',
+    '#pjax'
+  ],
+  switches: {
+    '.post-toc-wrap': Pjax.switches.innerHTML
+  },
+  analytics: false,
+  cacheBust: false,
+  scrollTo : !CONFIG.bookmark.enable
+});
+
+window.addEventListener('pjax:success', () => {
+  document.querySelectorAll('script[data-pjax], script#page-configurations, #pjax script').forEach(element => {
+    var code = element.text || element.textContent || element.innerHTML || '';
+    var parent = element.parentNode;
+    parent.removeChild(element);
+    var script = document.createElement('script');
+    if (element.id) {
+      script.id = element.id;
+    }
+    if (element.className) {
+      script.className = element.className;
+    }
+    if (element.type) {
+      script.type = element.type;
+    }
+    if (element.src) {
+      script.src = element.src;
+      // Force synchronous loading of peripheral JS.
+      script.async = false;
+    }
+    if (element.dataset.pjax !== undefined) {
+      script.dataset.pjax = '';
+    }
+    if (code !== '') {
+      script.appendChild(document.createTextNode(code));
+    }
+    parent.appendChild(script);
+  });
+  NexT.boot.refresh();
+  // Define Motion Sequence & Bootstrap Motion.
+  if (CONFIG.motion.enable) {
+    NexT.motion.integrator
+      .init()
+      .add(NexT.motion.middleWares.subMenu)
+      .add(NexT.motion.middleWares.postList)
+      .bootstrap();
+  }
+  NexT.utils.updateSidebarPosition();
+});
+</script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <div id="pjax">
+  
+
+  
+
+    </div>
+</body>
+</html>
