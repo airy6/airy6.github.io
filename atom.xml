@@ -3,11 +3,11 @@
   <title>Airy</title>
   
   
-  <link href="http://example.com/atom.xml" rel="self"/>
+  <link href="https://airy6.github.io/atom.xml" rel="self"/>
   
-  <link href="http://example.com/"/>
+  <link href="https://airy6.github.io/"/>
   <updated>2021-01-01T12:39:02.664Z</updated>
-  <id>http://example.com/</id>
+  <id>https://airy6.github.io/</id>
   
   <author>
     <name>Airy</name>
@@ -18,8 +18,8 @@
   
   <entry>
     <title>PHP 与 JavaScript 端之间的加密解密</title>
-    <link href="http://example.com/2020/07/07/PHP-%E4%B8%8E-JavaScript-%E7%AB%AF%E4%B9%8B%E9%97%B4%E7%9A%84%E5%8A%A0%E5%AF%86%E8%A7%A3%E5%AF%86/"/>
-    <id>http://example.com/2020/07/07/PHP-%E4%B8%8E-JavaScript-%E7%AB%AF%E4%B9%8B%E9%97%B4%E7%9A%84%E5%8A%A0%E5%AF%86%E8%A7%A3%E5%AF%86/</id>
+    <link href="https://airy6.github.io/2020/07/07/PHP-%E4%B8%8E-JavaScript-%E7%AB%AF%E4%B9%8B%E9%97%B4%E7%9A%84%E5%8A%A0%E5%AF%86%E8%A7%A3%E5%AF%86/"/>
+    <id>https://airy6.github.io/2020/07/07/PHP-%E4%B8%8E-JavaScript-%E7%AB%AF%E4%B9%8B%E9%97%B4%E7%9A%84%E5%8A%A0%E5%AF%86%E8%A7%A3%E5%AF%86/</id>
     <published>2020-07-07T04:36:10.000Z</published>
     <updated>2021-01-01T12:39:02.664Z</updated>
     
@@ -37,8 +37,8 @@
   
   <entry>
     <title>游戏 [英雄塔 Heroes Tower] 开发前构思</title>
-    <link href="http://example.com/2020/07/06/%E6%B8%B8%E6%88%8F-%E8%8B%B1%E9%9B%84%E5%A1%94-Heroes-Tower-%E5%BC%80%E5%8F%91%E5%89%8D%E6%9E%84%E6%80%9D/"/>
-    <id>http://example.com/2020/07/06/%E6%B8%B8%E6%88%8F-%E8%8B%B1%E9%9B%84%E5%A1%94-Heroes-Tower-%E5%BC%80%E5%8F%91%E5%89%8D%E6%9E%84%E6%80%9D/</id>
+    <link href="https://airy6.github.io/2020/07/06/%E6%B8%B8%E6%88%8F-%E8%8B%B1%E9%9B%84%E5%A1%94-Heroes-Tower-%E5%BC%80%E5%8F%91%E5%89%8D%E6%9E%84%E6%80%9D/"/>
+    <id>https://airy6.github.io/2020/07/06/%E6%B8%B8%E6%88%8F-%E8%8B%B1%E9%9B%84%E5%A1%94-Heroes-Tower-%E5%BC%80%E5%8F%91%E5%89%8D%E6%9E%84%E6%80%9D/</id>
     <published>2020-07-06T14:29:03.000Z</published>
     <updated>2021-01-01T11:59:33.198Z</updated>
     
@@ -51,14 +51,14 @@
     
     
     
-    <category term="Heroes Tower" scheme="http://example.com/tags/Heroes-Tower/"/>
+    <category term="Heroes Tower" scheme="https://airy6.github.io/tags/Heroes-Tower/"/>
     
   </entry>
   
   <entry>
     <title>Laravel 对关联表的一些操作</title>
-    <link href="http://example.com/2020/07/06/Laravel%20%E5%AF%B9%E5%85%B3%E8%81%94%E8%A1%A8%E7%9A%84%E4%B8%80%E4%BA%9B%E6%93%8D%E4%BD%9C/"/>
-    <id>http://example.com/2020/07/06/Laravel%20%E5%AF%B9%E5%85%B3%E8%81%94%E8%A1%A8%E7%9A%84%E4%B8%80%E4%BA%9B%E6%93%8D%E4%BD%9C/</id>
+    <link href="https://airy6.github.io/2020/07/06/Laravel%20%E5%AF%B9%E5%85%B3%E8%81%94%E8%A1%A8%E7%9A%84%E4%B8%80%E4%BA%9B%E6%93%8D%E4%BD%9C/"/>
+    <id>https://airy6.github.io/2020/07/06/Laravel%20%E5%AF%B9%E5%85%B3%E8%81%94%E8%A1%A8%E7%9A%84%E4%B8%80%E4%BA%9B%E6%93%8D%E4%BD%9C/</id>
     <published>2020-07-06T14:21:48.000Z</published>
     <updated>2021-01-01T11:58:48.782Z</updated>
     
@@ -70,17 +70,17 @@
     
     
     
-    <category term="Laravel" scheme="http://example.com/categories/Laravel/"/>
+    <category term="Laravel" scheme="https://airy6.github.io/categories/Laravel/"/>
     
     
-    <category term="Laravel" scheme="http://example.com/tags/Laravel/"/>
+    <category term="Laravel" scheme="https://airy6.github.io/tags/Laravel/"/>
     
   </entry>
   
   <entry>
     <title>调休的一天</title>
-    <link href="http://example.com/2020/01/11/%E8%B0%83%E4%BC%91%E7%9A%84%E4%B8%80%E5%A4%A9/"/>
-    <id>http://example.com/2020/01/11/%E8%B0%83%E4%BC%91%E7%9A%84%E4%B8%80%E5%A4%A9/</id>
+    <link href="https://airy6.github.io/2020/01/11/%E8%B0%83%E4%BC%91%E7%9A%84%E4%B8%80%E5%A4%A9/"/>
+    <id>https://airy6.github.io/2020/01/11/%E8%B0%83%E4%BC%91%E7%9A%84%E4%B8%80%E5%A4%A9/</id>
     <published>2020-01-11T07:30:21.000Z</published>
     <updated>2021-01-01T11:59:40.567Z</updated>
     
