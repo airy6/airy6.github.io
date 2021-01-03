@@ -6,7 +6,7 @@
   <link href="https://airy6.github.io/atom.xml" rel="self"/>
   
   <link href="https://airy6.github.io/"/>
-  <updated>2021-01-01T11:58:48.782Z</updated>
+  <updated>2021-01-03T06:01:06.625Z</updated>
   <id>https://airy6.github.io/</id>
   
   <author>
@@ -15,6 +15,25 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>我居然还有一个博客？！</title>
+    <link href="https://airy6.github.io/2021/01/03/%E6%88%91%E5%B1%85%E7%84%B6%E8%BF%98%E6%9C%89%E4%B8%80%E4%B8%AA%E5%8D%9A%E5%AE%A2/"/>
+    <id>https://airy6.github.io/2021/01/03/%E6%88%91%E5%B1%85%E7%84%B6%E8%BF%98%E6%9C%89%E4%B8%80%E4%B8%AA%E5%8D%9A%E5%AE%A2/</id>
+    <published>2021-01-03T04:37:14.000Z</published>
+    <updated>2021-01-03T06:01:06.625Z</updated>
+    
+    <content type="html"><![CDATA[<p>昨天做梦的时候突然在梦中想起，我居然还有这么个博客 😂 自从服务器到期忘了续费之后，就再也没写过博客了。</p><a id="more"></a><p>因为以前的服务器价格不太合适，而且除了发个博客其他时候基本上一点用处都没有。。</p><p>以前的内容也都没有了，因为以前的博客是直接搭建在服务器上的，时间久了之后数据库没了，也没有备份。。实惨</p><p>不过忽然想起来以前在搭建博客的时候顺便用 gitpage 搭了一个hexo博客，但发了几个文章之后觉得很麻烦，因为要用电脑编辑，还要再执行命令，各种配置，而且提交还要交到github才能出效果，比以前页面编辑要麻烦很多，还不能用手机编辑。</p><p>服务器暂时不准备再买了，就暂时放到gitpage上吧，这么一想好像也不那么的麻烦了，哈哈哈哈。</p>]]></content>
+    
+    
+    <summary type="html">&lt;p&gt;昨天做梦的时候突然在梦中想起，我居然还有这么个博客 😂 自从服务器到期忘了续费之后，就再也没写过博客了。&lt;/p&gt;</summary>
+    
+    
+    
+    
+    <category term="散事" scheme="https://airy6.github.io/tags/%E6%95%A3%E4%BA%8B/"/>
+    
+  </entry>
   
   <entry>
     <title>Laravel 对关联表的一些操作</title>
@@ -43,12 +62,18 @@
     <link href="https://airy6.github.io/2020/01/11/%E8%B0%83%E4%BC%91%E7%9A%84%E4%B8%80%E5%A4%A9/"/>
     <id>https://airy6.github.io/2020/01/11/%E8%B0%83%E4%BC%91%E7%9A%84%E4%B8%80%E5%A4%A9/</id>
     <published>2020-01-11T07:30:21.000Z</published>
-    <updated>2021-01-03T04:00:50.110Z</updated>
+    <updated>2021-01-03T04:36:39.755Z</updated>
     
-    <content type="html"><![CDATA[<p>周六，本来要休息的日子，我却还在上班😂</p><a id="more"></a><p>不过不是加班，谁让我上次调休休息过了。让我想起一句经典台词“出来混，迟早要还的”这不。来补班了嘛。</p><p>不过也挺好，人少清净，就连平时领导在时跟只鸡崽一样的同事，都大胆的玩起了游戏。真菜！</p>]]></content>
+    <content type="html"><![CDATA[<p>周六，本来要休息的日子，我却还在上班😂</p><p>不过不是加班，谁让我上次调休休息过了。让我想起一句经典台词“出来混，迟早要还的”这不。来补班了嘛。</p><p>不过也挺好，人少清净，就连平时领导在时跟只鸡崽一样的同事，都大胆的玩起了游戏。真菜！</p>]]></content>
     
     
-    <summary type="html">&lt;p&gt;周六，本来要休息的日子，我却还在上班😂&lt;/p&gt;</summary>
+      
+      
+    <summary type="html">&lt;p&gt;周六，本来要休息的日子，我却还在上班😂&lt;/p&gt;
+&lt;p&gt;不过不是加班，谁让我上次调休休息过了。让我想起一句经典台词“出来混，迟早要还的”这不。来补班了嘛。&lt;/p&gt;
+&lt;p&gt;不过也挺好，人少清净，就连平时领导在时跟只鸡崽一样的同事，都大胆的玩起了游戏。真菜！&lt;/p&gt;
+</summary>
+      
     
     
     
