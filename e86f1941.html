@@ -22,20 +22,21 @@
     var CONFIG = {"hostname":"airy6.github.io","root":"/","scheme":"Muse","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
-  <meta name="description" content="昨天做梦的时候突然在梦中想起，我居然还有这么个博客 😂 自从服务器到期忘了续费之后，就再也没写过博客了。">
+  <meta name="description" content="PHP8 alpha2发布了，最近引入了一个新的关键字：match, 这个关键字的作用跟switch有点类似。 虽然我一般对语法糖无感，但这个我觉得还是有点意思，match这个词也挺好看，那么它是干啥的呢？">
 <meta property="og:type" content="article">
-<meta property="og:title" content="我居然还有一个博客？！">
-<meta property="og:url" content="https://airy6.github.io/e86f1947.html">
+<meta property="og:title" content="PHP8新特性之match表达式">
+<meta property="og:url" content="https://airy6.github.io/e86f1941.html">
 <meta property="og:site_name" content="Airy">
-<meta property="og:description" content="昨天做梦的时候突然在梦中想起，我居然还有这么个博客 😂 自从服务器到期忘了续费之后，就再也没写过博客了。">
+<meta property="og:description" content="PHP8 alpha2发布了，最近引入了一个新的关键字：match, 这个关键字的作用跟switch有点类似。 虽然我一般对语法糖无感，但这个我觉得还是有点意思，match这个词也挺好看，那么它是干啥的呢？">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2021-01-03T04:37:14.000Z">
-<meta property="article:modified_time" content="2021-01-04T09:42:38.527Z">
+<meta property="article:published_time" content="2021-01-05T08:45:11.000Z">
+<meta property="article:modified_time" content="2021-01-05T08:57:36.382Z">
 <meta property="article:author" content="Airy">
-<meta property="article:tag" content="散事">
+<meta property="article:tag" content="转载">
+<meta property="article:tag" content="PHP8">
 <meta name="twitter:card" content="summary">
 
-<link rel="canonical" href="https://airy6.github.io/e86f1947.html">
+<link rel="canonical" href="https://airy6.github.io/e86f1941.html">
 
 
 <script id="page-configurations">
@@ -48,7 +49,7 @@
   };
 </script>
 
-  <title>我居然还有一个博客？！ | Airy</title>
+  <title>PHP8新特性之match表达式 | Airy</title>
   
 
 
@@ -164,7 +165,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://airy6.github.io/e86f1947.html">
+    <link itemprop="mainEntityOfPage" href="https://airy6.github.io/e86f1941.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/uploads/avatar.gif">
@@ -177,7 +178,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          我居然还有一个博客？！
+          PHP8新特性之match表达式
         </h1>
 
         <div class="post-meta">
@@ -186,23 +187,17 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
+              
 
-              <time title="创建时间：2021-01-03 12:37:14" itemprop="dateCreated datePublished" datetime="2021-01-03T12:37:14+08:00">2021-01-03</time>
+              <time title="创建时间：2021-01-05 16:45:11 / 修改时间：16:57:36" itemprop="dateCreated datePublished" datetime="2021-01-05T16:45:11+08:00">2021-01-05</time>
             </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2021-01-04 17:42:38" itemprop="dateModified" datetime="2021-01-04T17:42:38+08:00">2021-01-04</time>
-              </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="far fa-folder"></i>
               </span>
               <span class="post-meta-item-text">分类于</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E6%95%A3%E4%BA%8B/" itemprop="url" rel="index"><span itemprop="name">散事</span></a>
+                  <a href="/categories/PHP8/" itemprop="url" rel="index"><span itemprop="name">PHP8</span></a>
                 </span>
             </span>
 
@@ -217,13 +212,33 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <p>昨天做梦的时候突然在梦中想起，我居然还有这么个博客 😂 自从服务器到期忘了续费之后，就再也没写过博客了。</p>
+        <p>PHP8 alpha2发布了，最近引入了一个新的关键字：match, 这个关键字的作用跟switch有点类似。</p>
+<p>虽然我一般对语法糖无感，但这个我觉得还是有点意思，match这个词也挺好看，那么它是干啥的呢？</p>
 <a id="more"></a>
-
-<p>因为以前的服务器价格不太合适，而且除了发个博客其他时候基本上一点用处都没有。。</p>
-<p>以前的内容也都没有了，因为以前的博客是直接搭建在服务器上的，时间久了之后数据库没了，也没有备份。。实惨</p>
-<p>不过忽然想起来以前在搭建博客的时候顺便用 gitpage 搭了一个hexo博客，但发了几个文章之后觉得很麻烦，因为要用电脑编辑，还要再执行命令，各种配置，而且提交还要交到github才能出效果，比以前页面编辑要麻烦很多，还不能用手机编辑。</p>
-<p>服务器暂时不准备再买了，就暂时放到gitpage上吧，这么一想好像也不那么的麻烦了，哈哈哈哈。</p>
+<p>在以前我们可能会经常使用switch做值转换类的工作，类似:</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">switch</span> (<span class="variable">$input</span>) &#123;</span><br><span class="line">    <span class="keyword">case</span> <span class="string">&quot;true&quot;</span>:</span><br><span class="line">        <span class="variable">$result</span> = <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">break</span>;</span><br><span class="line">    <span class="keyword">case</span> <span class="string">&quot;false&quot;</span>:</span><br><span class="line">        <span class="variable">$result</span> = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">break</span>;</span><br><span class="line">    <span class="keyword">case</span> <span class="string">&quot;null&quot;</span>:</span><br><span class="line">        <span class="variable">$result</span> = <span class="literal">NULL</span>;</span><br><span class="line">    <span class="keyword">break</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>(当然，有的同学会说，谁会这么写，用个数组转换不行么？ 拜托，这是举例啊，数组也只能数字键和整数啊，万一key是需要其他表达式呢，万一你要多个key对应一个值呢，对吧？)</p>
+<p>那么如果使用match关键字呢，可以变成类似:</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$result</span> = <span class="keyword">match</span>(<span class="variable">$input</span>) &#123;</span><br><span class="line">        <span class="string">&quot;true&quot;</span> =&gt; <span class="number">1</span>,</span><br><span class="line">        <span class="string">&quot;false&quot;</span> =&gt; <span class="number">0</span>,</span><br><span class="line">        <span class="string">&quot;null&quot;</span> =&gt; <span class="literal">NULL</span>,</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>相比switch， match会直接返回值，可以直接赋值给<code>$result</code>了。</p>
+<p>并且，类似switch的多个case一个block一样，match的多个条件也可以写在一起，比如:</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$result</span> = <span class="keyword">match</span>(<span class="variable">$input</span>) &#123;</span><br><span class="line">    <span class="string">&quot;true&quot;</span>, <span class="string">&quot;on&quot;</span> =&gt; <span class="number">1</span>,</span><br><span class="line">    <span class="string">&quot;false&quot;</span>, <span class="string">&quot;off&quot;</span> =&gt; <span class="number">0</span>,</span><br><span class="line">    <span class="string">&quot;null&quot;</span>, <span class="string">&quot;empty&quot;</span>, <span class="string">&quot;NaN&quot;</span> =&gt; <span class="literal">NULL</span>,</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>需要注意的和switch不太一样的是，以前我们用switch可能会经常遇到这种诡异的问题:</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$input</span> = <span class="string">&quot;2 person&quot;</span>;</span><br><span class="line"><span class="keyword">switch</span> (<span class="variable">$input</span>) &#123;</span><br><span class="line">    <span class="keyword">case</span> <span class="number">2</span>:</span><br><span class="line">        <span class="keyword">echo</span> <span class="string">&quot;bad&quot;</span>;</span><br><span class="line">    <span class="keyword">break</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>你会发现，bad竟然被输出了，这是因为switch使用了宽松比较<code>==</code>。match就不会有这个问题了, 它使用的是严格比较<code>===</code>，就是值和类型都要完全相等。</p>
+<p>还有就是，当input并不能被match中的所有条件满足的时候，match会抛出一个UnhandledMatchError exception:</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$input</span> = <span class="string">&quot;false&quot;</span>;</span><br><span class="line"><span class="variable">$result</span> = <span class="keyword">match</span>(<span class="variable">$input</span>) &#123;</span><br><span class="line">        <span class="string">&quot;true&quot;</span> =&gt; <span class="number">1</span>,</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>会得到:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Fatal error: Uncaught UnhandledMatchError: Unhandled match value of type string</span><br></pre></td></tr></table></figure>
+<p>这样就不用担心万一match条件没写全导致了不可预知的错误。</p>
+<p>另外还是要说明，match是关键字，也就是从PHP8开始它不能出现在namespace或者类名中，如果你的项目中有用match作为类名的:</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Match</span> </span>&#123;&#125;</span><br></pre></td></tr></table></figure>
+<p>在PHP8开始将会得到语法错误了, 当然，方法名中还是可以用的。</p>
+<p>详细的，可以参考<a target="_blank" rel="noopener" href="https://wiki.php.net/rfc/match_expression_v2">RFC：Match Expression</a></p>
+<p>以上，没了。</p>
+<blockquote>
+<p>本文转载自 <a target="_blank" rel="noopener" href="https://www.laruence.com/2020/07/13/6033.html">laruence.com</a></p>
+</blockquote>
 
     </div>
 
@@ -243,26 +258,12 @@
         
 
 
-<div>
-<ul class="post-copyright">
-  <li class="post-copyright-author">
-    <strong>本文作者： </strong>Airy
-  </li>
-  <li class="post-copyright-link">
-    <strong>本文链接：</strong>
-    <a href="https://airy6.github.io/e86f1947.html" title="我居然还有一个博客？！">https://airy6.github.io/e86f1947.html</a>
-  </li>
-  <li class="post-copyright-license">
-    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
-  </li>
-</ul>
-</div>
-
 
 
       <footer class="post-footer">
           <div class="post-tags">
-              <a href="/tags/%E6%95%A3%E4%BA%8B/" rel="tag"># 散事</a>
+              <a href="/tags/%E8%BD%AC%E8%BD%BD/" rel="tag"># 转载</a>
+              <a href="/tags/PHP8/" rel="tag"># PHP8</a>
           </div>
 
         
@@ -271,13 +272,10 @@
         
     <div class="post-nav">
       <div class="post-nav-item">
-    <a href="/b22c03d9.html" rel="prev" title="Laravel 对关联表的一些操作">
-      <i class="fa fa-chevron-left"></i> Laravel 对关联表的一些操作
+    <a href="/62cc6f9b.html" rel="prev" title="手摸手教你让 Laravel 开发 API 更得心应手">
+      <i class="fa fa-chevron-left"></i> 手摸手教你让 Laravel 开发 API 更得心应手
     </a></div>
-      <div class="post-nav-item">
-    <a href="/62cc6f9b.html" rel="next" title="手摸手教你让 Laravel 开发 API 更得心应手">
-      手摸手教你让 Laravel 开发 API 更得心应手 <i class="fa fa-chevron-right"></i>
-    </a></div>
+      <div class="post-nav-item"></div>
     </div>
       </footer>
     

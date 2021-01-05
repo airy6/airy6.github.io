@@ -14,6 +14,8 @@
 
 <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
 <link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+  <link rel="stylesheet" href="/lib/pace/pace-theme-flash.min.css">
+  <script src="/lib/pace/pace.min.js"></script>
 
 <script id="hexo-configurations">
     var NexT = window.NexT || {};
@@ -116,6 +118,16 @@
     <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
 
   </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a>
+
+  </li>
         <li class="menu-item menu-item-archives">
 
     <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
@@ -148,6 +160,86 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://airy6.github.io/e86f1941.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/uploads/avatar.gif">
+      <meta itemprop="name" content="Airy">
+      <meta itemprop="description" content="永远不要满足于现状">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Airy">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/e86f1941.html" class="post-title-link" itemprop="url">PHP8新特性之match表达式</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2021-01-05 16:45:11 / 修改时间：16:57:36" itemprop="dateCreated datePublished" datetime="2021-01-05T16:45:11+08:00">2021-01-05</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/PHP8/" itemprop="url" rel="index"><span itemprop="name">PHP8</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>PHP8 alpha2发布了，最近引入了一个新的关键字：match, 这个关键字的作用跟switch有点类似。</p>
+<p>虽然我一般对语法糖无感，但这个我觉得还是有点意思，match这个词也挺好看，那么它是干啥的呢？</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/e86f1941.html#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+
+    <div>
+      
+    </div>
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="https://airy6.github.io/62cc6f9b.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -171,10 +263,16 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
-              
 
-              <time title="创建时间：2021-01-04 15:52:43 / 修改时间：17:42:38" itemprop="dateCreated datePublished" datetime="2021-01-04T15:52:43+08:00">2021-01-04</time>
+              <time title="创建时间：2021-01-04 15:52:43" itemprop="dateCreated datePublished" datetime="2021-01-04T15:52:43+08:00">2021-01-04</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-01-05 16:58:27" itemprop="dateModified" datetime="2021-01-05T16:58:27+08:00">2021-01-05</time>
+              </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="far fa-folder"></i>
@@ -196,7 +294,7 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <h1 id="起因"><a href="#起因" class="headerlink" title="起因"></a>起因</h1><p>       随着前后端完全分离，<code>PHP</code>也基本告别了<code>view</code>模板嵌套开发，转而专门写资源接口。<code>Laravel</code>是PHP框架中最优雅的框架，国内也越来越多人告别<code>ThinkPHP</code>选择了<code>Laravel</code>。</p>
+          <h1 id="1-起因"><a href="#1-起因" class="headerlink" title="1. 起因"></a>1. 起因</h1><p>       随着前后端完全分离，<code>PHP</code>也基本告别了<code>view</code>模板嵌套开发，转而专门写资源接口。<code>Laravel</code>是PHP框架中最优雅的框架，国内也越来越多人告别<code>ThinkPHP</code>选择了<code>Laravel</code>。</p>
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/62cc6f9b.html#more" rel="contents">
@@ -343,7 +441,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2021-01-04 17:48:51" itemprop="dateModified" datetime="2021-01-04T17:48:51+08:00">2021-01-04</time>
+                <time title="修改时间：2021-01-05 13:06:38" itemprop="dateModified" datetime="2021-01-05T13:06:38+08:00">2021-01-05</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -429,7 +527,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2021-01-04 17:42:38" itemprop="dateModified" datetime="2021-01-04T17:42:38+08:00">2021-01-04</time>
+                <time title="修改时间：2021-01-05 13:05:52" itemprop="dateModified" datetime="2021-01-05T13:05:52+08:00">2021-01-05</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -452,10 +550,15 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <p>周六，本来要休息的日子，我却还在上班😂</p>
-<p>不过不是加班，谁让我上次调休休息过了。让我想起一句经典台词“出来混，迟早要还的”这不。来补班了嘛。</p>
-<p>不过也挺好，人少清净，就连平时领导在时跟只鸡崽一样的同事，都大胆的玩起了游戏。真菜！</p>
-
+          <p><img src="https://ss0.bdstatic.com/70cFvHSh_Q1YnxGkpoWK1HF6hhy/it/u=536836266,488945292&fm=26&gp=0.jpg"></p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/7b0f9d9.html#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
@@ -542,23 +645,42 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">4</span>
+          <span class="site-state-item-count">5</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
-        <span class="site-state-item-count">2</span>
+          
+        <span class="site-state-item-count">3</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
-        <span class="site-state-item-count">2</span>
+          
+        <span class="site-state-item-count">4</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
 </div>
 
+
+    
+
+  <div class="">
+    <div class="">
+
+        <div class="social-item">
+          <a target="_blank" class="social-link" href="/atom.xml">
+            <span class="icon">
+              <i class="fa fa-rss"></i>
+            </span>
+
+            <span class="label">RSS</span>
+          </a>
+        </div>
+    </div>
+  </div>
 
 
       </div>
