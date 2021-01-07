@@ -1,0 +1,645 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.3.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3/dist/jquery.fancybox.min.css">
+  <link rel="stylesheet" href="/lib/pace/pace-theme-flash.min.css">
+  <script src="/lib/pace/pace.min.js"></script>
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"airy6.github.io","root":"/","scheme":"Muse","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":true,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="感慨学习总是那么的不容易，希望让兄弟们领略Laravel编程技巧，走进Laravel深处的我更不容易，每次给大家写代码，我总是思考这么一个问题，如何能让大家明白我想让你们明白的东西，不可否认这是一件非常困难的事，所以我只能感慨：我太难了。完成这篇博文已经是2019年11月28日凌晨2点了，我也要睡了。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="老司机带你实现Laravel路由注册功能">
+<meta property="og:url" content="https://airy6.github.io/8e934fac.html">
+<meta property="og:site_name" content="Airy">
+<meta property="og:description" content="感慨学习总是那么的不容易，希望让兄弟们领略Laravel编程技巧，走进Laravel深处的我更不容易，每次给大家写代码，我总是思考这么一个问题，如何能让大家明白我想让你们明白的东西，不可否认这是一件非常困难的事，所以我只能感慨：我太难了。完成这篇博文已经是2019年11月28日凌晨2点了，我也要睡了。">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://cdn.learnku.com/uploads/images/201911/27/39566/FEnNUW2kRi.gif!large">
+<meta property="og:image" content="https://cdn.learnku.com/uploads/images/201911/27/39566/UyVGnsuHyZ.png!large">
+<meta property="og:image" content="https://cdn.learnku.com/uploads/images/201911/27/39566/aOQh55akQH.png!large">
+<meta property="og:image" content="https://cdn.learnku.com/uploads/images/201911/28/39566/XWqHpGSDkG.png!large">
+<meta property="og:image" content="https://cdn.learnku.com/uploads/images/201911/28/39566/CyUFAJZRw5.png!large">
+<meta property="og:image" content="https://cdn.learnku.com/uploads/images/201911/28/39566/NKRI7MlsPV.png!large">
+<meta property="og:image" content="https://cdn.learnku.com/uploads/images/201911/28/39566/CoB5YPLhDo.png!large">
+<meta property="og:image" content="https://cdn.learnku.com/uploads/images/201911/28/39566/sOjCUMq5hj.png!large">
+<meta property="article:published_time" content="2021-01-07T12:14:19.000Z">
+<meta property="article:modified_time" content="2021-01-07T12:18:43.756Z">
+<meta property="article:author" content="Airy">
+<meta property="article:tag" content="Laravel">
+<meta property="article:tag" content="转载">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://cdn.learnku.com/uploads/images/201911/27/39566/FEnNUW2kRi.gif!large">
+
+<link rel="canonical" href="https://airy6.github.io/8e934fac.html">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>老司机带你实现Laravel路由注册功能 | Airy</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+<link rel="alternate" href="/atom.xml" title="Airy" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">Airy</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://airy6.github.io/8e934fac.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/uploads/avatar.gif">
+      <meta itemprop="name" content="Airy">
+      <meta itemprop="description" content="永远不要满足于现状">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Airy">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          老司机带你实现Laravel路由注册功能
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2021-01-07 20:14:19 / 修改时间：20:18:43" itemprop="dateCreated datePublished" datetime="2021-01-07T20:14:19+08:00">2021-01-07</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E8%BD%AC%E8%BD%BD/" itemprop="url" rel="index"><span itemprop="name">转载</span></a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E8%BD%AC%E8%BD%BD/Laravel/" itemprop="url" rel="index"><span itemprop="name">Laravel</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h2 id="感慨"><a href="#感慨" class="headerlink" title="感慨"></a>感慨</h2><p>学习总是那么的不容易，希望让兄弟们领略Laravel编程技巧，走进Laravel深处的我更不容易，每次给大家写代码，我总是思考这么一个问题，如何能让大家明白我想让你们明白的东西，不可否认这是一件非常困难的事，所以我只能感慨：我太难了。完成这篇博文已经是2019年11月28日凌晨2点了，我也要睡了。</p>
+<p><img src="https://cdn.learnku.com/uploads/images/201911/27/39566/FEnNUW2kRi.gif!large"></p>
+<a id="more"></a>
+
+<h2 id="终极目标"><a href="#终极目标" class="headerlink" title="终极目标"></a>终极目标</h2><p>之前写了一篇博文《<a target="_blank" rel="noopener" href="https://learnku.com/articles/36590/">大家对 Laravel 的源代码和架构感兴趣么？</a>》,相信很多人已经看过了，也都表示了极大的兴趣，这也是我对大家的承诺，所以从上一篇博文《<a target="_blank" rel="noopener" href="https://learnku.com/articles/37162">详解 PHP 反射的基本使用</a>》开始，我就准备给大家讲解Laravel的相关知识，讲解Laravel的代码非常不容易，需要阅读者具备相当的编程能力，对设计模式有一定的认识和顽强的毅力，最后但并不是最不重要的就是极大的好奇心。所以为了大家能够读懂，我会给大家编写功能和Laravel相当的程序，也可以说是简化版，这样最有助于大家的理解，如果大家理解了我写的，日后再来阅读Laravel，将会轻车熟路。</p>
+<h2 id="本节目标"><a href="#本节目标" class="headerlink" title="本节目标"></a>本节目标</h2><p>在本篇博文中，我将会给大家实现一个类似<strong>Laravel路由注册的功能</strong>，这个功能在Laravel当中非常重要，希望大家能够理解，代码我已经上传到了码云<a target="_blank" rel="noopener" href="https://gitee.com/obamajs/laravel-route-register">laravel-route-register</a>，这是我在下班之后给大家写的，实属不易，希望大家珍惜，仓库代码截图如下：</p>
+<p><img src="https://cdn.learnku.com/uploads/images/201911/27/39566/UyVGnsuHyZ.png!large" alt="老司机带你实现Laravel路由注册功能"></p>
+<p>这个debug.php文件的测试代码如下：</p>
+<p><img src="https://cdn.learnku.com/uploads/images/201911/27/39566/aOQh55akQH.png!large" alt="老司机带你实现Laravel路由注册功能"></p>
+<p>上图就是我们今天所要实现的功能，这个嵌套是完全没有限制的，你可以任意组合api，希望大家把源代码下载下来，再配合我写的这篇博文，一定要读懂它，这是你理解任何PHP框架所不可或缺的必要步骤。</p>
+<h2 id="阅读准备"><a href="#阅读准备" class="headerlink" title="阅读准备"></a>阅读准备</h2><p>在阅读以下的内容之前，请先参考laravel路由相关文档，<a target="_blank" rel="noopener" href="https://laravel.com/docs/6.x/routing">Laravel路由</a>，首先搞清楚Laravel注册路由的可操作API。</p>
+<h2 id="文件简介"><a href="#文件简介" class="headerlink" title="文件简介"></a>文件简介</h2><p>上面我已经贴出了这个包的几个文件，下面我会仔细的讲解下列文件：</p>
+<ol>
+<li>Router文件是我们的路由器文件，我们注册路由就是通过它进行的，比如它给我们提供的api有：get，post，where，namespace，prefix，这几个方法是我们操纵路由器的接口。</li>
+<li>RouteRegistrar文件，中文翻译过来就是：路由注册商，这个文件的内容很简单，它的作用是提供给我们路由嵌套的能力，之所以group方法能够做到路由嵌套，就是因为这个类和Router文件<strong>相互作用</strong>的结果，只凭它是无法做到这一点的。</li>
+<li>Route文件，每一条路由实际上都是一个Route类的对象，所以你明白它的意思了吧？</li>
+</ol>
+<h2 id="代码讲解"><a href="#代码讲解" class="headerlink" title="代码讲解"></a>代码讲解</h2><p>在以后的代码讲解中，我都不会贴出代码的完整版，因为这样很影响博文的感官体验，几页都是代码，所以希望大家下载下来，不然你读这篇博文没啥意义，真的没啥用。</p>
+<p>首先从最简单的开始吧！</p>
+<p>Router有个静态的get方法，这个方法就对应着get请求了，如下：</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="built_in">static</span> <span class="function"><span class="keyword">function</span> <span class="title">get</span>(<span class="params"><span class="variable">$rule</span>, <span class="variable">$action</span></span>)</span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="variable">$route</span> = <span class="built_in">self</span>::newRoute(<span class="built_in">self</span>::REQUEST_METHOD_GET, <span class="variable">$rule</span>, <span class="variable">$action</span>);</span><br><span class="line">    <span class="built_in">self</span>::getInstance()</span><br><span class="line">        -&gt;addRouteToContainer(<span class="variable">$route</span>);</span><br><span class="line">    <span class="keyword">return</span> <span class="variable">$route</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>REQUEST_METHOD_GET是我定义的常量为”GET”，get方法的第一个参数为路由规则，第二个参数为你的控制器或者是回调方法，比如：</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Router::get(<span class="string">&#x27;dashboard&#x27;</span>, <span class="string">&#x27;DashboardController@index&#x27;</span>);</span><br><span class="line">Router::get(<span class="string">&#x27;/call&#x27;</span>, <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<p>get方法首先调用newRoute方法，如下：</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">private</span> <span class="built_in">static</span> <span class="function"><span class="keyword">function</span> <span class="title">newRoute</span>(<span class="params"><span class="variable">$method</span>, <span class="variable">$rule</span>, <span class="variable">$action</span></span>)</span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="variable">$inst</span> = <span class="built_in">self</span>::getInstance();</span><br><span class="line">    <span class="keyword">if</span> (!<span class="keyword">empty</span>(<span class="variable">$inst</span>-&gt;groupStack)) &#123;</span><br><span class="line">        <span class="variable">$attributes</span> = end(<span class="variable">$inst</span>-&gt;groupStack);</span><br><span class="line">        <span class="variable">$rule</span> = <span class="keyword">isset</span>(<span class="variable">$attributes</span>[<span class="string">&#x27;prefix&#x27;</span>]) ?</span><br><span class="line">            rtrim(<span class="variable">$attributes</span>[<span class="string">&#x27;prefix&#x27;</span>], <span class="string">&#x27;/&#x27;</span>) . <span class="string">&#x27;/&#x27;</span> . <span class="variable">$rule</span> : <span class="variable">$rule</span>;</span><br><span class="line">        <span class="keyword">if</span> (is_string(<span class="variable">$action</span>) &amp;&amp; <span class="keyword">isset</span>(<span class="variable">$attributes</span>[<span class="string">&#x27;namespace&#x27;</span>])) &#123;</span><br><span class="line">            <span class="variable">$action</span> = trim(<span class="variable">$attributes</span>[<span class="string">&#x27;namespace&#x27;</span>], <span class="string">&#x27;\\&#x27;</span>) . <span class="string">&#x27;\\&#x27;</span> . <span class="variable">$action</span>;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="variable">$attributes</span> = [];</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="variable">$route</span> = <span class="keyword">new</span> Route(<span class="variable">$method</span>, <span class="variable">$rule</span>, <span class="variable">$action</span>);</span><br><span class="line">    <span class="keyword">if</span> (<span class="keyword">isset</span>(<span class="variable">$attributes</span>[<span class="string">&#x27;where&#x27;</span>])) &#123;</span><br><span class="line">        <span class="variable">$route</span>-&gt;where(<span class="variable">$attributes</span>[<span class="string">&#x27;where&#x27;</span>]);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="variable">$route</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>因为在我们的程序中，Router实例一般都是单例的，所以我把它的构造器声明为私有的，也就是外部无法调用它，getInstance方法如下：</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="built_in">static</span> <span class="function"><span class="keyword">function</span> <span class="title">getInstance</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (!<span class="built_in">self</span>::<span class="variable">$instance</span>) &#123;</span><br><span class="line">        <span class="built_in">self</span>::<span class="variable">$instance</span> = <span class="keyword">new</span> <span class="built_in">self</span>();</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">self</span>::<span class="variable">$instance</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>这个方法非常简单，我们回到方法newRoute中，它首先检查groupStack属性是否为空，这个属性是干啥的呢？我可以提前告诉大家，之所以我们可以实现group操作，它的功劳功不可没，这里我们先假设它的值为空（后面分析group方法的时候，我们再来看它），那么接下来往下走就创建了一个Route对象了，最后的isset检查也是和group有关，我们后面再分析，newRoute粗略分析完成，我们回到get方法中，调用Router实例对象的addRouteToContainer方法添加到容器中。</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">private</span> <span class="function"><span class="keyword">function</span> <span class="title">addRouteToContainer</span>(<span class="params">Route <span class="variable">$route</span></span>)</span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">$this</span>-&gt;routeCollection[] = <span class="variable">$route</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>post方法和get方法基本是一样的，我们不在分析。</p>
+<p>这里给大家一个使用Phpstorm的技巧，如果你的类提供了动态的方法（<strong>__call</strong>或者<strong>__callStatic</strong>提供的方法），你想让Phpstorm给你代码提示，你可以按我下面的方法操作：</p>
+<p><img src="https://cdn.learnku.com/uploads/images/201911/28/39566/XWqHpGSDkG.png!large" alt="老司机带你实现Laravel路由注册功能"></p>
+<p>比如我的Router类，它提供了三个静态方法where，namespace和prefix，我就在Router类的上面写三个**@method** ，如果是静态方法的话，加上static前缀，紧接着写函数的返回值类型，然后方法名，最后括号加上参数名，这是常用的技巧，希望大家熟知。</p>
+<p>我们再来看Router类</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="built_in">static</span> <span class="function"><span class="keyword">function</span> <span class="title">__callStatic</span>(<span class="params"><span class="variable">$name</span>, <span class="variable">$arguments</span></span>)</span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (in_array(<span class="variable">$name</span>, [<span class="string">&#x27;where&#x27;</span>, <span class="string">&#x27;namespace&#x27;</span>, <span class="string">&#x27;prefix&#x27;</span>])) &#123;</span><br><span class="line">        <span class="keyword">return</span> (<span class="keyword">new</span> RouteRegistrar(<span class="built_in">self</span>::getInstance()))-&gt;<span class="variable">$name</span>(<span class="variable">$arguments</span>[<span class="number">0</span>]);</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="keyword">throw</span> <span class="keyword">new</span> <span class="built_in">RuntimeException</span>(<span class="string">&quot;method $&#123;name&#125; not exist&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>它实现了__callStatic方法，这就是我们能够调用where，namespace和prefix这三个静态方法的原因。对__callStatic不熟悉的兄弟，可以这样理解，当你调用一个类A的静态方法show时，如果这个静态方法show不存在，那么就会调用__callStatic方法，第一个参数是你的静态方法名show，第二个参数 $arguments是一个数组，包含你传递给静态方法show的所有参数，比如你调用A::show(1,2,3,4)，那么 $arguments就是[1，2，3，4]，是不是很简单。进入到__callStatic方法中，首先判断如果我们调用的静态方法为’where’, ‘namespace’, ‘prefix’三个中的一个，那么会返回一个RouteRegistrar类的对象，这个类的实现很简单，如下：</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span>  <span class="title">RouteRegistrar</span></span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@var</span> $router Router</span></span><br><span class="line"><span class="comment">     * **/</span></span><br><span class="line">    <span class="keyword">private</span> <span class="variable">$router</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="variable">$attributes</span> = [];</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">__construct</span>(<span class="params">Router <span class="variable">$router</span></span>)</span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">$this</span>-&gt;router = <span class="variable">$router</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">where</span>(<span class="params"><span class="variable">$name</span>, <span class="variable">$value</span> = <span class="literal">null</span></span>)</span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (is_array(<span class="variable">$name</span>)) &#123;</span><br><span class="line">            <span class="keyword">foreach</span> (<span class="variable">$name</span> <span class="keyword">as</span> <span class="variable">$key</span> =&gt; <span class="variable">$value</span>) &#123;</span><br><span class="line">                <span class="keyword">$this</span>-&gt;attributes[<span class="string">&#x27;where&#x27;</span>][<span class="variable">$key</span>] = <span class="variable">$value</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            <span class="keyword">$this</span>-&gt;attributes[<span class="string">&#x27;where&#x27;</span>][<span class="variable">$name</span>] = <span class="variable">$value</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">$this</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">namespace</span>(<span class="params"><span class="variable">$namespace</span></span>)</span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">$this</span>-&gt;attributes[<span class="string">&#x27;namespace&#x27;</span>] = <span class="variable">$namespace</span>;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">$this</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">prefix</span>(<span class="params"><span class="variable">$prefix</span></span>)</span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">$this</span>-&gt;attributes[<span class="string">&#x27;prefix&#x27;</span>] = <span class="variable">$prefix</span>;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">$this</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">group</span>(<span class="params"><span class="keyword">callable</span> <span class="variable">$callback</span></span>)</span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">$this</span>-&gt;router-&gt;group(<span class="keyword">$this</span>-&gt;attributes, <span class="variable">$callback</span>);</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">$this</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>它的构造方法接受我们的Router对象实例，这个$router属性会在后面的group方法中用到，后面会讲，回到__callStatic方法中，我们解释一下这个代码：</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">(<span class="keyword">new</span> RouteRegistrar(<span class="built_in">self</span>::getInstance()))-&gt;<span class="variable">$name</span>(<span class="variable">$arguments</span>[<span class="number">0</span>]);</span><br></pre></td></tr></table></figure>
+<p>我要给大家解释的是，php中的变量名是可以作为方法名进行调用的，具体调用的哪个方法取决于你的变量的值，比如这里的$name是where，那么就是调用RouteRegistrar的where方法了，这个大家应该很容易理解，RouteRegistrar类的所有方法的作用和Laravel是一样的，比如where设置参数的约束，比如对于路由 /admin/order/id :</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">-&gt;where(<span class="string">&#x27;id&#x27;</span>, <span class="string">&#x27;\d&#123;1,2&#125;&#x27;</span>)</span><br></pre></td></tr></table></figure>
+<p>namespace是用来设置控制器命名空间前缀的，<br>比如下面这个给控制器OrderController加上Admin\Controller命名空间前缀，就成为了Admin\Controller\OrderController：</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">-&gt;namespace(<span class="string">&quot;Admin\\Controller&quot;</span>)</span><br></pre></td></tr></table></figure>
+<p>prefix是设置路由前缀的，比如你有一个/order的路由，那么prefix为admin的话，路由就变为了/admin/order了：</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">-&gt;prefix(<span class="string">&quot;admin&quot;</span>)</span><br></pre></td></tr></table></figure>
+<p>上面已经详细讲述了where，prefix和namespace的作用，相信大家理解起来没啥问题了把，还有一点需要记住的是，上面这三个方法都把接受的值存储在了RouteRegistrar类的attributes属性中，这个属性后面会用到，下面我们再来看group方法，从上面的Router的__callStatic方法，我们知道group方法是不能直接被我们使用的，我们要使用group方法只能先调用where，prefix和namespace三个动态方法中的一个，前面已经分析过了，他们会返回RouteRegistrar类的实例。</p>
+<p>现在我们再来分析group方法，在分析之前，我们把咱们的测试例子贴出来，接下来的分析都是以这段代码进行分析，为了大家理解，这么做了：</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">Router::where(<span class="string">&#x27;name&#x27;</span>, <span class="string">&#x27;[a-z]+&#x27;</span>)</span><br><span class="line">    -&gt;where(<span class="string">&#x27;id&#x27;</span>, <span class="string">&#x27;\d&#123;1,2&#125;&#x27;</span>)</span><br><span class="line">    -&gt;prefix(<span class="string">&quot;admin&quot;</span>)</span><br><span class="line">    -&gt;namespace(<span class="string">&quot;Admin\\Controller&quot;</span>)</span><br><span class="line">    -&gt;group(<span class="function"><span class="keyword">function</span> (<span class="params">Router <span class="variable">$router</span></span>) </span>&#123;</span><br><span class="line">        Router::get(<span class="string">&#x27;dashboard&#x27;</span>, <span class="string">&#x27;DashboardController@index&#x27;</span>);</span><br><span class="line">        Router::prefix(<span class="string">&quot;order&quot;</span>)</span><br><span class="line">            -&gt;group(<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">                Router::post(<span class="string">&#x27;add&#x27;</span>, <span class="string">&#x27;OrderController@add&#x27;</span>);</span><br><span class="line">                Router::post(<span class="string">&#x27;index&#x27;</span>, <span class="string">&#x27;OrderController/index&#x27;</span>);</span><br><span class="line">            &#125;);</span><br><span class="line">    &#125;);</span><br></pre></td></tr></table></figure>
+<p>前面分析过where，prefix和namespace会把值存储在attributes中，具体请看上面的代码，很简单，最终当前的RouteRegistrar实例的attributes就是下面这样：</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$arrtibuets</span> = [</span><br><span class="line">    <span class="string">&#x27;where&#x27;</span> =&gt; [</span><br><span class="line">        <span class="string">&#x27;id&#x27;</span> =&gt; <span class="string">&#x27;\d&#123;1,2&#125;&#x27;</span>,</span><br><span class="line">        <span class="string">&#x27;name&#x27;</span> =&gt; <span class="string">&#x27;[a-z]+&#x27;</span></span><br><span class="line">    ],</span><br><span class="line">    <span class="string">&#x27;prefix&#x27;</span> =&gt; <span class="string">&#x27;admin&#x27;</span>,</span><br><span class="line">    <span class="string">&#x27;namespace&#x27;</span> =&gt; <span class="string">&#x27;Admin\\Controller&#x27;</span></span><br><span class="line">];</span><br></pre></td></tr></table></figure>
+<p>最外层的最后一个方法是group方法，我们进入到RouteRegistrar类的group方法中：</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">group</span>(<span class="params"><span class="keyword">callable</span> <span class="variable">$callback</span></span>)</span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">$this</span>-&gt;router-&gt;group(<span class="keyword">$this</span>-&gt;attributes, <span class="variable">$callback</span>);</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">$this</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>这里它只是调用了Router实例的group方法，<strong>注意了，我们不能直接调用Router实例的group方法</strong>，它只是被RouteRegistrar的group方法调用，$this-&gt;attributes就是我们上面的分析结果，我们进入到Router的group方法中：</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">group</span>(<span class="params"><span class="variable">$attributes</span>, <span class="keyword">callable</span> <span class="variable">$callback</span></span>)</span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">$this</span>-&gt;updateGroupStack(<span class="variable">$attributes</span>);</span><br><span class="line">    <span class="variable">$callback</span>(<span class="built_in">self</span>::getInstance());</span><br><span class="line">    array_pop(<span class="keyword">$this</span>-&gt;groupStack);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>这里首先调用updateGroupStack方法，我们来看一下：</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">private</span> <span class="function"><span class="keyword">function</span> <span class="title">updateGroupStack</span>(<span class="params"><span class="keyword">array</span> <span class="variable">$attributes</span></span>)</span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (!<span class="keyword">empty</span>(<span class="keyword">$this</span>-&gt;groupStack)) &#123;</span><br><span class="line">        <span class="variable">$new_attributes</span> = [];</span><br><span class="line">        <span class="variable">$last_attribute</span> = end(<span class="keyword">$this</span>-&gt;groupStack);</span><br><span class="line">        <span class="variable">$new_attributes</span>[<span class="string">&#x27;where&#x27;</span>] =</span><br><span class="line">            array_merge(<span class="variable">$last_attribute</span>[<span class="string">&#x27;where&#x27;</span>] ?? [], <span class="variable">$attributes</span>[<span class="string">&#x27;where&#x27;</span>] ?? []);</span><br><span class="line">        <span class="variable">$new_attributes</span>[<span class="string">&#x27;prefix&#x27;</span>] = <span class="keyword">isset</span>(<span class="variable">$last_attribute</span>[<span class="string">&#x27;prefix&#x27;</span>])</span><br><span class="line">            ? (<span class="variable">$last_attribute</span>[<span class="string">&#x27;prefix&#x27;</span>] . (<span class="keyword">isset</span>(<span class="variable">$attributes</span>[<span class="string">&#x27;prefix&#x27;</span>])</span><br><span class="line">                    ? <span class="string">&#x27;/&#x27;</span> . <span class="variable">$attributes</span>[<span class="string">&#x27;prefix&#x27;</span>] : <span class="string">&#x27;&#x27;</span>))</span><br><span class="line">            : (<span class="variable">$attributes</span>[<span class="string">&#x27;prefix&#x27;</span>] ?? <span class="string">&#x27;&#x27;</span>);</span><br><span class="line">        <span class="variable">$new_attributes</span>[<span class="string">&#x27;namespace&#x27;</span>] = <span class="keyword">isset</span>(<span class="variable">$last_attribute</span>[<span class="string">&#x27;namespace&#x27;</span>])</span><br><span class="line">            ? (<span class="variable">$last_attribute</span>[<span class="string">&#x27;namespace&#x27;</span>] .</span><br><span class="line">                (<span class="keyword">isset</span>(<span class="variable">$attributes</span>[<span class="string">&#x27;namespace&#x27;</span>]) ? <span class="string">&#x27;/&#x27;</span> . <span class="variable">$attributes</span>[<span class="string">&#x27;namespace&#x27;</span>] : <span class="string">&#x27;&#x27;</span>))</span><br><span class="line">            : (<span class="variable">$attributes</span>[<span class="string">&#x27;namespace&#x27;</span>] ?? <span class="string">&#x27;&#x27;</span>);</span><br><span class="line">			<span class="keyword">$this</span>-&gt;groupStack[] = <span class="variable">$new_attributes</span>;</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="keyword">$this</span>-&gt;groupStack[] = <span class="variable">$attributes</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>参数$attributes的值，咱们是知道的，这里的groupStack默认是为空的，所以：</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">$this</span>-&gt;groupStack[] = <span class="variable">$attributes</span>;</span><br></pre></td></tr></table></figure>
+<p>这段代码被调用，至于上面的if语句块，后面再来讲，咱们按代码流程走。<br>上面调用updateGroupStack方法把attributes存储在了groupStack，此时groupStack的值为，如下：</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$groupStack</span> = [[</span><br><span class="line">    <span class="string">&#x27;where&#x27;</span> =&gt; [</span><br><span class="line">        <span class="string">&#x27;id&#x27;</span> =&gt; <span class="string">&#x27;\d&#123;1,2&#125;&#x27;</span>,</span><br><span class="line">        <span class="string">&#x27;name&#x27;</span> =&gt; <span class="string">&#x27;[a-z]+&#x27;</span></span><br><span class="line">    ],</span><br><span class="line">    <span class="string">&#x27;prefix&#x27;</span> =&gt; <span class="string">&#x27;admin&#x27;</span>,</span><br><span class="line">    <span class="string">&#x27;namespace&#x27;</span> =&gt; <span class="string">&#x27;Admin\\Controller&#x27;</span></span><br><span class="line">]];</span><br></pre></td></tr></table></figure>
+<p>可以看到groupStack的第一个元素就是attributes整个数组，记住这个，后面会用到，回到Router的group方法中，继续调用：</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$callback</span>(<span class="built_in">self</span>::getInstance());</span><br></pre></td></tr></table></figure>
+<p>这里的$callback就是我们传递给RouterRegistrar的group方法的回调，当前就是：</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> (<span class="params">Router <span class="variable">$router</span></span>) </span>&#123;</span><br><span class="line">    Router::get(<span class="string">&#x27;dashboard&#x27;</span>, <span class="string">&#x27;DashboardController@index&#x27;</span>);</span><br><span class="line">    Router::prefix(<span class="string">&quot;order&quot;</span>)</span><br><span class="line">        -&gt;group(<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">            Router::post(<span class="string">&#x27;add&#x27;</span>, <span class="string">&#x27;OrderController@add&#x27;</span>);</span><br><span class="line">            Router::post(<span class="string">&#x27;index&#x27;</span>, <span class="string">&#x27;OrderController/index&#x27;</span>);</span><br><span class="line">        &#125;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>下面进入到回调中，首先调用get方法，这个方法之前我们已经讲过了，但是还记得吗？get方法调用了newRoute方法，这个方法里面有内容，我们说等到后面再讲，没错，就是现在了，我们来看：</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">private</span> <span class="built_in">static</span> <span class="function"><span class="keyword">function</span> <span class="title">newRoute</span>(<span class="params"><span class="variable">$method</span>, <span class="variable">$rule</span>, <span class="variable">$action</span></span>)</span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="variable">$inst</span> = <span class="built_in">self</span>::getInstance();</span><br><span class="line">    <span class="keyword">if</span> (!<span class="keyword">empty</span>(<span class="variable">$inst</span>-&gt;groupStack)) &#123;</span><br><span class="line">        <span class="variable">$attributes</span> = end(<span class="variable">$inst</span>-&gt;groupStack);</span><br><span class="line">        <span class="variable">$rule</span> = <span class="keyword">isset</span>(<span class="variable">$attributes</span>[<span class="string">&#x27;prefix&#x27;</span>]) ?</span><br><span class="line">            rtrim(<span class="variable">$attributes</span>[<span class="string">&#x27;prefix&#x27;</span>], <span class="string">&#x27;/&#x27;</span>) . <span class="string">&#x27;/&#x27;</span> . <span class="variable">$rule</span> : <span class="variable">$rule</span>;</span><br><span class="line">        <span class="keyword">if</span> (is_string(<span class="variable">$action</span>) &amp;&amp; <span class="keyword">isset</span>(<span class="variable">$attributes</span>[<span class="string">&#x27;namespace&#x27;</span>])) &#123;</span><br><span class="line">            <span class="variable">$action</span> = trim(<span class="variable">$attributes</span>[<span class="string">&#x27;namespace&#x27;</span>], <span class="string">&#x27;\\&#x27;</span>) . <span class="string">&#x27;\\&#x27;</span> . <span class="variable">$action</span>;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="variable">$attributes</span> = [];</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="variable">$route</span> = <span class="keyword">new</span> Route(<span class="variable">$method</span>, <span class="variable">$rule</span>, <span class="variable">$action</span>);</span><br><span class="line">    <span class="keyword">if</span> (<span class="keyword">isset</span>(<span class="variable">$attributes</span>[<span class="string">&#x27;where&#x27;</span>])) &#123;</span><br><span class="line">        <span class="variable">$route</span>-&gt;where(<span class="variable">$attributes</span>[<span class="string">&#x27;where&#x27;</span>]);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="variable">$route</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>经过上面的分析，groupStack里面有一个元素，所以他会进入到if代码分支中，end($inst-&gt;groupStack)获取了groupStack的最后一个元素，因为groupStack中只有一个元素，所以也就是第一个元素，这里就是，我们再贴出来一次：</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$arrtibuets</span> = [</span><br><span class="line">    <span class="string">&#x27;where&#x27;</span> =&gt; [</span><br><span class="line">        <span class="string">&#x27;id&#x27;</span> =&gt; <span class="string">&#x27;\d&#123;1,2&#125;&#x27;</span>,</span><br><span class="line">        <span class="string">&#x27;name&#x27;</span> =&gt; <span class="string">&#x27;[a-z]+&#x27;</span></span><br><span class="line">    ],</span><br><span class="line">    <span class="string">&#x27;prefix&#x27;</span> =&gt; <span class="string">&#x27;admin&#x27;</span>,</span><br><span class="line">    <span class="string">&#x27;namespace&#x27;</span> =&gt; <span class="string">&#x27;Admin\\Controller&#x27;</span></span><br><span class="line">];</span><br></pre></td></tr></table></figure>
+<p>上面首先检查$arrtibuets中是否存在prefix，如果存在的话，就和get方法的第一个参数rule合并，假如rule是order，那么合并之后就是admin/order了。紧接着检查$arrtibuets中是否存在namespace，并且get方法的第二个参数action为字符串的时候（如果action是回调方法，那么命名空间就没用了），合并namespace到action的前面，例如action为OrderController，那么合并之后就是Admin\Controller\OrderController了。这个函数的最后面检查attributes中是否设置过where，我们这里有设置的，所以调用Route类的where方法。Route类的方法很简单，就不贴出来了，大家下载下来看，一目了然。</p>
+<p>get方法调用完之后，回到group的回调方法中，继续下面的代码调用，如下：</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Router::prefix(<span class="string">&quot;order&quot;</span>)</span><br><span class="line">        -&gt;group(<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">            Router::post(<span class="string">&#x27;add&#x27;</span>, <span class="string">&#x27;OrderController@add&#x27;</span>);</span><br><span class="line">            Router::post(<span class="string">&#x27;index&#x27;</span>, <span class="string">&#x27;OrderController/index&#x27;</span>);</span><br><span class="line">        &#125;);</span><br></pre></td></tr></table></figure>
+<p>这里再一次的调用到prefix方法，<strong>同样的，它会走我们上面的流程</strong>，它也是设置RouteRegistrar类的attributes属性的prefix值，所以这个时候调用Router的group方法（还记得RouteRegistrar直接调用Router的group方法吗？）：</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">group</span>(<span class="params"><span class="variable">$attributes</span>, <span class="keyword">callable</span> <span class="variable">$callback</span></span>)</span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">$this</span>-&gt;updateGroupStack(<span class="variable">$attributes</span>);</span><br><span class="line">    <span class="variable">$callback</span>(<span class="built_in">self</span>::getInstance());</span><br><span class="line">    array_pop(<span class="keyword">$this</span>-&gt;groupStack);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>这里的$attributes为：</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$attributes</span>=[</span><br><span class="line">	<span class="string">&#x27;prefix&#x27;</span>=&gt;<span class="string">&#x27;order&#x27;</span></span><br><span class="line">];</span><br></pre></td></tr></table></figure>
+<p>记住这个值，我们再一次调用updateGroupStack方法：</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">private</span> <span class="function"><span class="keyword">function</span> <span class="title">updateGroupStack</span>(<span class="params"><span class="keyword">array</span> <span class="variable">$attributes</span></span>)</span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (!<span class="keyword">empty</span>(<span class="keyword">$this</span>-&gt;groupStack)) &#123;</span><br><span class="line">        <span class="variable">$new_attributes</span> = [];</span><br><span class="line">        <span class="variable">$last_attribute</span> = end(<span class="keyword">$this</span>-&gt;groupStack);</span><br><span class="line">        <span class="variable">$new_attributes</span>[<span class="string">&#x27;where&#x27;</span>] =</span><br><span class="line">            array_merge(<span class="variable">$last_attribute</span>[<span class="string">&#x27;where&#x27;</span>] ?? [], <span class="variable">$attributes</span>[<span class="string">&#x27;where&#x27;</span>] ?? []);</span><br><span class="line">        <span class="variable">$new_attributes</span>[<span class="string">&#x27;prefix&#x27;</span>] = <span class="keyword">isset</span>(<span class="variable">$last_attribute</span>[<span class="string">&#x27;prefix&#x27;</span>])</span><br><span class="line">            ? (<span class="variable">$last_attribute</span>[<span class="string">&#x27;prefix&#x27;</span>] . (<span class="keyword">isset</span>(<span class="variable">$attributes</span>[<span class="string">&#x27;prefix&#x27;</span>])</span><br><span class="line">                    ? <span class="string">&#x27;/&#x27;</span> . <span class="variable">$attributes</span>[<span class="string">&#x27;prefix&#x27;</span>] : <span class="string">&#x27;&#x27;</span>))</span><br><span class="line">            : (<span class="variable">$attributes</span>[<span class="string">&#x27;prefix&#x27;</span>] ?? <span class="string">&#x27;&#x27;</span>);</span><br><span class="line">        <span class="variable">$new_attributes</span>[<span class="string">&#x27;namespace&#x27;</span>] = <span class="keyword">isset</span>(<span class="variable">$last_attribute</span>[<span class="string">&#x27;namespace&#x27;</span>])</span><br><span class="line">            ? (<span class="variable">$last_attribute</span>[<span class="string">&#x27;namespace&#x27;</span>] .</span><br><span class="line">                (<span class="keyword">isset</span>(<span class="variable">$attributes</span>[<span class="string">&#x27;namespace&#x27;</span>]) ? <span class="string">&#x27;/&#x27;</span> . <span class="variable">$attributes</span>[<span class="string">&#x27;namespace&#x27;</span>] : <span class="string">&#x27;&#x27;</span>))</span><br><span class="line">            : (<span class="variable">$attributes</span>[<span class="string">&#x27;namespace&#x27;</span>] ?? <span class="string">&#x27;&#x27;</span>);</span><br><span class="line">			<span class="keyword">$this</span>-&gt;groupStack[] = <span class="variable">$new_attributes</span>;</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="keyword">$this</span>-&gt;groupStack[] = <span class="variable">$attributes</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>经过上面的分析，此时的groupStack有一个元素就是：</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$arrtibuets</span> = [</span><br><span class="line">    <span class="string">&#x27;where&#x27;</span> =&gt; [</span><br><span class="line">        <span class="string">&#x27;id&#x27;</span> =&gt; <span class="string">&#x27;\d&#123;1,2&#125;&#x27;</span>,</span><br><span class="line">        <span class="string">&#x27;name&#x27;</span> =&gt; <span class="string">&#x27;[a-z]+&#x27;</span></span><br><span class="line">    ],</span><br><span class="line">    <span class="string">&#x27;prefix&#x27;</span> =&gt; <span class="string">&#x27;admin&#x27;</span>,</span><br><span class="line">    <span class="string">&#x27;namespace&#x27;</span> =&gt; <span class="string">&#x27;Admin\\Controller&#x27;</span></span><br><span class="line">];</span><br></pre></td></tr></table></figure>
+<p>参数$attributes是：</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$attributes</span>=[</span><br><span class="line">	<span class="string">&#x27;prefix&#x27;</span>=&gt;<span class="string">&#x27;order&#x27;</span></span><br><span class="line">];</span><br></pre></td></tr></table></figure>
+<p>end($this-&gt;groupStack)获取到了最后一个元素，当前就是第一个啊，这里首先合并where字段，紧接着再合并prefix，最后namespace，上面合并的代码很简单，大家应该能够看懂把，哈哈的，合并之后的$new_attributes为：</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$arrtibuets</span> = [</span><br><span class="line">    <span class="string">&#x27;where&#x27;</span> =&gt; [</span><br><span class="line">        <span class="string">&#x27;id&#x27;</span> =&gt; <span class="string">&#x27;\d&#123;1,2&#125;&#x27;</span>,</span><br><span class="line">        <span class="string">&#x27;name&#x27;</span> =&gt; <span class="string">&#x27;[a-z]+&#x27;</span></span><br><span class="line">    ],</span><br><span class="line">    <span class="string">&#x27;prefix&#x27;</span> =&gt; <span class="string">&#x27;admin/order&#x27;</span>,</span><br><span class="line">    <span class="string">&#x27;namespace&#x27;</span> =&gt; <span class="string">&#x27;Admin\\Controller&#x27;</span></span><br><span class="line">];</span><br></pre></td></tr></table></figure>
+<p>合并完之后，再次把合并的结果$new_attributes存储在groupStack中，注意成为groupStack的最后一个元素，所以此时groupStack有2个元素了，好了，分析完上面的，我们再调用最内层的group回调方法：</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    Router::post(<span class="string">&#x27;add&#x27;</span>, <span class="string">&#x27;OrderController@add&#x27;</span>);</span><br><span class="line">    Router::post(<span class="string">&#x27;index&#x27;</span>, <span class="string">&#x27;OrderController/index&#x27;</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>还记得之前我们说的get请求和post请求是一样的么？他也是直接调用newRoute方法，我们再次贴出来：</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">private</span> <span class="built_in">static</span> <span class="function"><span class="keyword">function</span> <span class="title">newRoute</span>(<span class="params"><span class="variable">$method</span>, <span class="variable">$rule</span>, <span class="variable">$action</span></span>)</span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="variable">$inst</span> = <span class="built_in">self</span>::getInstance();</span><br><span class="line">    <span class="keyword">if</span> (!<span class="keyword">empty</span>(<span class="variable">$inst</span>-&gt;groupStack)) &#123;</span><br><span class="line">        <span class="variable">$attributes</span> = end(<span class="variable">$inst</span>-&gt;groupStack);</span><br><span class="line">        <span class="variable">$rule</span> = <span class="keyword">isset</span>(<span class="variable">$attributes</span>[<span class="string">&#x27;prefix&#x27;</span>]) ?</span><br><span class="line">            rtrim(<span class="variable">$attributes</span>[<span class="string">&#x27;prefix&#x27;</span>], <span class="string">&#x27;/&#x27;</span>) . <span class="string">&#x27;/&#x27;</span> . <span class="variable">$rule</span> : <span class="variable">$rule</span>;</span><br><span class="line">        <span class="keyword">if</span> (is_string(<span class="variable">$action</span>) &amp;&amp; <span class="keyword">isset</span>(<span class="variable">$attributes</span>[<span class="string">&#x27;namespace&#x27;</span>])) &#123;</span><br><span class="line">            <span class="variable">$action</span> = trim(<span class="variable">$attributes</span>[<span class="string">&#x27;namespace&#x27;</span>], <span class="string">&#x27;\\&#x27;</span>) . <span class="string">&#x27;\\&#x27;</span> . <span class="variable">$action</span>;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="variable">$attributes</span> = [];</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="variable">$route</span> = <span class="keyword">new</span> Route(<span class="variable">$method</span>, <span class="variable">$rule</span>, <span class="variable">$action</span>);</span><br><span class="line">    <span class="keyword">if</span> (<span class="keyword">isset</span>(<span class="variable">$attributes</span>[<span class="string">&#x27;where&#x27;</span>])) &#123;</span><br><span class="line">        <span class="variable">$route</span>-&gt;where(<span class="variable">$attributes</span>[<span class="string">&#x27;where&#x27;</span>]);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="variable">$route</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>注意此时groupStack为：</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$arrtibuets</span> = [</span><br><span class="line">    <span class="string">&#x27;where&#x27;</span> =&gt; [</span><br><span class="line">        <span class="string">&#x27;id&#x27;</span> =&gt; <span class="string">&#x27;\d&#123;1,2&#125;&#x27;</span>,</span><br><span class="line">        <span class="string">&#x27;name&#x27;</span> =&gt; <span class="string">&#x27;[a-z]+&#x27;</span></span><br><span class="line">    ],</span><br><span class="line">    <span class="string">&#x27;prefix&#x27;</span> =&gt; <span class="string">&#x27;admin/order&#x27;</span>,</span><br><span class="line">    <span class="string">&#x27;namespace&#x27;</span> =&gt; <span class="string">&#x27;Admin\\Controller&#x27;</span></span><br><span class="line">];</span><br></pre></td></tr></table></figure>
+<p>后面的一系列合并操作，和上面讲get的时候是一样的，回调调用完之后，回到Router的group方法：</p>
+<p><img src="https://cdn.learnku.com/uploads/images/201911/28/39566/CyUFAJZRw5.png!large" alt="老司机带你实现Laravel路由注册功能"></p>
+<p>最内层的回调调用完之后，从groupStack中弹出最后一个元素，因为最内层group之外的路由用不到，所以必须弹出，到这里最内层的group方法调用完成，返回到RouteRegistrar的group方法，</p>
+<p><img src="https://cdn.learnku.com/uploads/images/201911/28/39566/NKRI7MlsPV.png!large" alt="老司机带你实现Laravel路由注册功能"></p>
+<p>还记得RouterRegistrar的group方法是从哪里调用的吗？</p>
+<p><img src="https://cdn.learnku.com/uploads/images/201911/28/39566/CoB5YPLhDo.png!large" alt="老司机带你实现Laravel路由注册功能"></p>
+<p>它是在最外层的group方法的回调中啊，所以我们继续回到</p>
+<p><img src="https://cdn.learnku.com/uploads/images/201911/28/39566/sOjCUMq5hj.png!large" alt="老司机带你实现Laravel路由注册功能"></p>
+<p>最后就是弹出groupStack了，这一步操作前面已经讲过了。</p>
+<h2 id="重点"><a href="#重点" class="headerlink" title="重点"></a>重点</h2><p>我上面之所以要列出每一步的值，就是希望大家清楚我的代码到底做了一件什么事，代码是如何实现无限循环嵌套的，以及每一层的约束是如何合并的，等等。</p>
+<blockquote>
+<p>本文转载自 <a target="_blank" rel="noopener" href="https://learnku.com/articles/37275">https://learnku.com/articles/37275</a></p>
+</blockquote>
+
+    </div>
+
+    
+    
+    
+
+    <div>
+      
+        <div>
+    
+        <div style="text-align:center;color: #ccc;font-size:14px;">-------------本文结束-感谢您的阅读-------------</div>
+    
+</div>
+      
+    </div>
+        
+
+
+
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/Laravel/" rel="tag"># Laravel</a>
+              <a href="/tags/%E8%BD%AC%E8%BD%BD/" rel="tag"># 转载</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2aa0d8c4.html" rel="prev" title="PHP8新特性之match表达式">
+      <i class="fa fa-chevron-left"></i> PHP8新特性之match表达式
+    </a></div>
+      <div class="post-nav-item"></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+    
+  <div class="comments">
+    <div id="lv-container" data-id="city" data-uid="MTAyMC81MjM0My8yODgyMQ=="></div>
+  </div>
+  
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%84%9F%E6%85%A8"><span class="nav-text">感慨</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%BB%88%E6%9E%81%E7%9B%AE%E6%A0%87"><span class="nav-text">终极目标</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%9C%AC%E8%8A%82%E7%9B%AE%E6%A0%87"><span class="nav-text">本节目标</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%98%85%E8%AF%BB%E5%87%86%E5%A4%87"><span class="nav-text">阅读准备</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%96%87%E4%BB%B6%E7%AE%80%E4%BB%8B"><span class="nav-text">文件简介</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BB%A3%E7%A0%81%E8%AE%B2%E8%A7%A3"><span class="nav-text">代码讲解</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%87%8D%E7%82%B9"><span class="nav-text">重点</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Airy"
+      src="/uploads/avatar.gif">
+  <p class="site-author-name" itemprop="name">Airy</p>
+  <div class="site-description" itemprop="description">永远不要满足于现状</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">6</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">5</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">4</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+
+
+    
+
+  <div class="">
+    <div class="">
+
+        <div class="social-item">
+          <a target="_blank" class="social-link" href="/atom.xml">
+            <span class="icon">
+              <i class="fa fa-rss"></i>
+            </span>
+
+            <span class="label">RSS</span>
+          </a>
+        </div>
+    </div>
+  </div>
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Airy</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://muse.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a> 强力驱动
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/pjax/pjax.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js"></script>
+  <script src="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3/dist/jquery.fancybox.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/muse.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+  <script>
+var pjax = new Pjax({
+  selectors: [
+    'head title',
+    '#page-configurations',
+    '.content-wrap',
+    '.post-toc-wrap',
+    '.languages',
+    '#pjax'
+  ],
+  switches: {
+    '.post-toc-wrap': Pjax.switches.innerHTML
+  },
+  analytics: false,
+  cacheBust: false,
+  scrollTo : !CONFIG.bookmark.enable
+});
+
+window.addEventListener('pjax:success', () => {
+  document.querySelectorAll('script[data-pjax], script#page-configurations, #pjax script').forEach(element => {
+    var code = element.text || element.textContent || element.innerHTML || '';
+    var parent = element.parentNode;
+    parent.removeChild(element);
+    var script = document.createElement('script');
+    if (element.id) {
+      script.id = element.id;
+    }
+    if (element.className) {
+      script.className = element.className;
+    }
+    if (element.type) {
+      script.type = element.type;
+    }
+    if (element.src) {
+      script.src = element.src;
+      // Force synchronous loading of peripheral JS.
+      script.async = false;
+    }
+    if (element.dataset.pjax !== undefined) {
+      script.dataset.pjax = '';
+    }
+    if (code !== '') {
+      script.appendChild(document.createTextNode(code));
+    }
+    parent.appendChild(script);
+  });
+  NexT.boot.refresh();
+  // Define Motion Sequence & Bootstrap Motion.
+  if (CONFIG.motion.enable) {
+    NexT.motion.integrator
+      .init()
+      .add(NexT.motion.middleWares.subMenu)
+      .add(NexT.motion.middleWares.postList)
+      .bootstrap();
+  }
+  NexT.utils.updateSidebarPosition();
+});
+</script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <div id="pjax">
+  
+
+  
+
+<script>
+NexT.utils.loadComments(document.querySelector('#lv-container'), () => {
+  window.livereOptions = {
+    refer: location.pathname.replace(CONFIG.root, '').replace('index.html', '')
+  };
+  (function(d, s) {
+    var j, e = d.getElementsByTagName(s)[0];
+    if (typeof LivereTower === 'function') { return; }
+    j = d.createElement(s);
+    j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+    j.async = true;
+    e.parentNode.insertBefore(j, e);
+  })(document, 'script');
+});
+</script>
+
+    </div>
+</body>
+</html>
